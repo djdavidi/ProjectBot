@@ -1,0 +1,59 @@
+<section id="home">
+    <i class="fa fa-random"></i>
+    <!-- make this into more modular, where title is feeding through from controller -->
+    <div class="row">
+        <div class="col-sm-3">
+        <h3>API category selection</h3>
+        </div>
+        <div class="col-sm-3">
+        <h3>API category selection</h3>
+        </div>
+        <div class="col-sm-3">
+        <h3>Dataset category selection</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="api in thing" class="random-result">
+        	<md-card>
+            <p>{{api.name}}</p>
+            {{api.link}}
+            <i class="fa fa-heart"></i>
+            <i class="fa fa-plus"></i>
+            <div>{{api.description}}</div>
+
+            </md-card>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <h2>APIS</h2>
+            <div ng-repeat="api in apis">
+                {{api.name}}
+                <i class="fa fa-times"></i>
+            </div>
+            <md-card>hey</md-card>
+        </div>
+        <div class="col-sm-3">
+            <h2>DATASETS</h2>
+            <div ng-repeat="dataset in datasets">
+                {{dataset.name}}
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <h2>Tools</h2> coming soon e.g phaser webgl
+            <div ng-repeat="tool in tools">
+                {{tool.name}}
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <!-- ng sanitize this -->
+            <div class="row"> Idea Description </div>
+            save comibatino
+            <textarea></textarea>
+        </div>
+    </div>
+    top current apis and stuff chart stuff
+</section>
