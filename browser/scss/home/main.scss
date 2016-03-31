@@ -5,17 +5,23 @@
 	color:gray;
 }
 
-
-.search-bar-custom{
-	width:20%
-}
-
-#project-heading{
-	font-size:32px;
-}
-
-
 .random-result{
 	display: inline-block;
 	width:25%;
+}
+
+a{
+	text-decoration: none;
+}
+
+
+.inliner{
+	float:right;
+	display: inline-block;
+	width:25px;
+	cursor:pointer;
+}
+
+.hundred-percenter{
+	width:100%;
 }

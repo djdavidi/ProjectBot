@@ -1,4 +1,18 @@
 <section id="home">
+    <div class="search-bar-custom">
+        <md-content class="md-padding">
+            <form ng-submit="$event.preventDefault()">
+                <md-autocomplete ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in cats" md-item-text="item.display" md-min-length="0" placeholder="Find an API, Dataset, or Tool">
+                    <md-item-template>
+                        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No resources matching "{{ctrl.searchText}}" were found.
+                    </md-not-found>
+                </md-autocomplete>
+            </form>
+        </md-content>
+    </div>
     <i class="fa fa-random"></i>
     <!-- make this into more modular, where title is feeding through from controller -->
     <div class="row">
@@ -15,10 +29,11 @@
     <div class="row">
         <div ng-repeat="api in thing" class="random-result">
         	<md-card>
-            <p>{{api.name}}</p>
-            {{api.link}}
-            <i class="fa fa-heart"></i>
-            <i class="fa fa-plus"></i>
+			<div class="hundred-percenter">
+            <a href='http://{{api.link}}' target="_blank">{{api.name}}</a>
+            <i class="fa fa-heart inliner" ng-click="myStyle={color:'red'}"></i>
+            <i class="fa fa-plus inliner"></i>
+            </div>
             <div>{{api.description}}</div>
 
             </md-card>

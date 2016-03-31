@@ -16,9 +16,34 @@ body {
 
 #main {
   padding-top: 60px;
-  padding-left:20px;
+  padding-left:25px;
   margin: 0 auto;
 }
+
+.top-of-site{
+	padding-left: 25px;
+}
+
+#project-heading{
+  font-size:32px;
+  padding-top:50px;
+  -ms-transform: rotate(-25deg);
+    -webkit-transform: rotate(-25deg); 
+    transform: rotate(-25deg);
+    padding-bottom: 50px;
+    width:200px;
+    padding-right:20px;
+    background-color:blue;
+    color:white;
+}
+
+.search-bar-custom{
+background-color:green;
+  width:500px;
+  margin-left:150px;
+  padding-right:1%;
+}
+
 
 
 @import 'directives/main';

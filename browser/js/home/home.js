@@ -1,15 +1,8 @@
-app.config(function ($stateProvider) {
+app.config(function($stateProvider) {
     $stateProvider.state('home', {
         url: '/',
         templateUrl: 'js/home/home.html',
-        controller:function($scope,ApiList){
-        	ApiList.getApi()
-        	.then(function(list){
-        	console.log("list"+list)
-        	$scope.thing = list
-
-        	})
-        }
+        controller: 'HomeCtrl'
     });
 });
 
@@ -17,15 +10,21 @@ app.config(function ($stateProvider) {
 
 
 
-app.factory('ApiList', function ($http) {
-	return {
-    	getApi : function () {
-        return $http.get('/api/random').then(function (response) {
-        	console.log("response"+response.data)
-            return response.data
-        });
-    }
+app.factory('ApiFactory', function($http) {
+    return {
+        getApi: function() {
+            return $http.get('/api/random').then(function(response) {
+                console.log("response" + response.data)
+                return response.data
+            })
+        },
+        getCategories: function() {
+            return $http.get('/api/apis/categories')
+                .then(function(response) {
+                    return response.data
+                })
+        }
 
-	}
+    }
 
 });
