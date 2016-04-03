@@ -5,7 +5,9 @@
 body {
   background: #fdfdfd;
 }
-
+.fa {
+  cursor:pointer;
+}
 @mixin clearfix {
   &:after {
     content: "";
@@ -15,30 +17,35 @@ body {
 }
 
 #main {
-  padding-top: 60px;
+  padding-top: 10px;
   padding-left:25px;
   margin: 0 auto;
 }
 
 .top-of-site{
 	padding-left: 25px;
+  width:50%;
+  display:inline-block;
+  margin-right:0px;
 }
 
 #project-heading{
-  font-size:32px;
-  padding-top:50px;
+  /*  padding-top:50px;
   -ms-transform: rotate(-25deg);
     -webkit-transform: rotate(-25deg); 
     transform: rotate(-25deg);
     padding-bottom: 50px;
+    height:100px;*/
+    font-size:32px;
     width:200px;
     padding-right:20px;
-    background-color:blue;
     color:white;
+    background-color:blue;
 }
 
+
 .search-bar-custom{
-background-color:green;
+background-color:pink;
   width:500px;
   margin-left:150px;
   padding-right:1%;

@@ -25,3 +25,39 @@ a{
 .hundred-percenter{
 	width:100%;
 }
+
+.inline-blocker{
+	display:inline-block;
+}
+
+#random-search-container{
+	width:70%;
+}
+.focused-card-container{
+	width:30%;
+	margin-right:0;
+	float:right;
+}
+
+.category-selector{
+	width:70%;
+}
+
+.randomizer-icon{
+	padding-left: 5%;
+	font-size: 20px;
+
+}
+.focused-card{
+	text-align:center;
+	width:100%;
+}
+.idea-input{
+  width:100%;
+  overflow:hidden;
+  height:250px;
+  max-height:250px;
+  resize:none;
+  border:1px solid gray;
+  overflow-y: auto;
+}

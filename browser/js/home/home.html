@@ -1,74 +1,81 @@
 <section id="home">
-    <div class="search-bar-custom">
-        <md-content class="md-padding">
-            <form ng-submit="$event.preventDefault()">
-                <md-autocomplete ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in cats" md-item-text="item.display" md-min-length="0" placeholder="Find an API, Dataset, or Tool">
-                    <md-item-template>
-                        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
-                    </md-item-template>
-                    <md-not-found>
-                        No resources matching "{{ctrl.searchText}}" were found.
-                    </md-not-found>
-                </md-autocomplete>
+    <div class="focused-card-container">
+    <md-card class="focused-card">
+        <h3>Focused Card</h3>
+        THLTHTILH
+        w4tlikehsa
+       
+    </md-card>
+    </div>
+    <!-- again, mvp here, not very modular and in future will want ability to swap out, but for now.. -->
+    <div id="random-search-container">
+        <div class="row">
+            <i class="fa fa-random" type="submit" ng-click="randomize(searchObject)"></i>
+            <form>
+                <div class="col-sm-4">
+                    <h3 class="md-warn inline-blocker" ng-model="docType1">API:</h3>
+                    <md-input-container class="inline-blocker category-selector">
+                        <label>Category</label>
+                        <md-select ng-model="category1">
+                            <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="md-warn inline-blocker" ng-model="docType2">API:</h3>
+                    <md-input-container class="inline-blocker category-selector">
+                        <label>Category</label>
+                        <md-select ng-model="category2">
+                            <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Dataset category</h3>
+                </div>
             </form>
-        </md-content>
-    </div>
-    <i class="fa fa-random"></i>
-    <!-- make this into more modular, where title is feeding through from controller -->
-    <div class="row">
-        <div class="col-sm-3">
-        <h3>API category selection</h3>
         </div>
-        <div class="col-sm-3">
-        <h3>API category selection</h3>
-        </div>
-        <div class="col-sm-3">
-        <h3>Dataset category selection</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div ng-repeat="api in thing" class="random-result">
-        	<md-card>
-			<div class="hundred-percenter">
-            <a href='http://{{api.link}}' target="_blank">{{api.name}}</a>
-            <i class="fa fa-heart inliner" ng-click="myStyle={color:'red'}"></i>
-            <i class="fa fa-plus inliner"></i>
-            </div>
-            <div>{{api.description}}</div>
-
-            </md-card>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-sm-3">
-            <h2>APIS</h2>
-            <div ng-repeat="api in apis">
-                {{api.name}}
-                <i class="fa fa-times"></i>
-            </div>
-            <md-card>hey</md-card>
-        </div>
-        <div class="col-sm-3">
-            <h2>DATASETS</h2>
-            <div ng-repeat="dataset in datasets">
-                {{dataset.name}}
-                <i class="fa fa-times"></i>
+        <div class="row">
+            <div ng-repeat="api in thing" class="random-result">
+                <md-card>
+                    <div class="hundred-percenter">
+                        <a href='http://{{api.link}}' target="_blank">{{api.name}}</a>
+                        <i class="fa fa-heart inliner" ng-click="myStyle={color:'red'}"></i>
+                        <i class="fa fa-plus inliner"></i>
+                    </div>
+                    <div>{{api.description}}</div>
+                </md-card>
             </div>
         </div>
-        <div class="col-sm-3">
-            <h2>Tools</h2> coming soon e.g phaser webgl
-            <div ng-repeat="tool in tools">
-                {{tool.name}}
-                <i class="fa fa-times"></i>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+                <h2>Apis</h2>
+                <div ng-repeat="api in apis">
+                    {{api.name}}
+                    <i class="fa fa-times"></i>
+                </div>
+                <md-card>hey</md-card>
+            </div>
+            <div class="col-sm-3">
+                <h2>Datasets</h2>
+                <div ng-repeat="dataset in datasets">
+                    {{dataset.name}}
+                    <i class="fa fa-times"></i>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h2>Tools</h2> coming soon e.g phaser webgl
+                <div ng-repeat="tool in tools">
+                    {{tool.name}}
+                    <i class="fa fa-times"></i>
+                </div>
+            </div>
+            <div class="col-sm-3">
+            <h2> Idea</h2>
+                <!-- ng sanitize this -->
+                <textarea class="idea-input"></textarea>
             </div>
         </div>
-        <div class="col-sm-3">
-            <!-- ng sanitize this -->
-            <div class="row"> Idea Description </div>
-            save comibatino
-            <textarea></textarea>
-        </div>
     </div>
-    top current apis and stuff chart stuff
 </section>

@@ -4,7 +4,9 @@ var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = mongoose.model('User');
 var Api = mongoose.model('Api');
+var Dataset = mongoose.model('Dataset');
 var apiData = require('./scraped')
+var datasetInfo = require('./datasetInfo')
 console.log("COUNT"+ apiData.length)
 var seedUsers = function () {
 
@@ -33,7 +35,20 @@ connectToDb.then(function () {
             process.kill(0);
         }
     }).then(function () {
-        console.log(chalk.green('Seed successful!'));
+        console.log(chalk.green('User seed uccessful!'));
+        
+    })
+})
+.then(function(){
+   Dataset.find({}).then(function (datasets) {
+        if (datasets.length === 0) {
+            return Dataset.create(datasetInfo)
+        } else {
+            console.log(chalk.magenta('Seems to already be dataset data, exiting!'));
+            process.kill(0);
+        }
+    }).then(function () {
+        console.log(chalk.green('Dataset seed successful!'));
         
     })
 })
@@ -47,7 +62,7 @@ connectToDb.then(function () {
             process.kill(0);
         }
     }).then(function () {
-        console.log(chalk.green('Seed api successful!'));
+        console.log(chalk.green('Api seed successful!'));
         process.kill(0);
     }).catch(function (err) {
         console.error("errroro"+err);

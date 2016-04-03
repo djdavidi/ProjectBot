@@ -1,4 +1,4 @@
-app.controller('HomeCtrl', function ($scope, AuthService, $state, ApiFactory) {
+app.controller('HomeCtrl', function ($scope, AuthService, $state, ApiFactory, RandomFactory) {
    
 	ApiFactory.getApi()
 	.then(function(list){
@@ -12,30 +12,5 @@ app.controller('HomeCtrl', function ($scope, AuthService, $state, ApiFactory) {
 		
 	})
 
-    $scope.simulateQuery = false;
-    $scope.isDisabled    = false;
-    // list of `state` value/display objects
-    $scope.categories        = ApiFactory.getCategories();
-    $scope.querySearch   = querySearch;
-    $scope.selectedItemChange = selectedItemChange;
-    $scope.searchTextChange   = searchTextChange;
-    $scope.newState = newState;
-
-    function querySearch (query) {
-      var results = query ? $scope.categories.filter( createFilterFor(query) ) : $scope.categories,
-          deferred;
-      if ($scope.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-	   function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-    }
+	$scope.randomize = RandomFactory.randomize;
 });
