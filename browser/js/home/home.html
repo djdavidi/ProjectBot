@@ -2,48 +2,56 @@
     <div class="focused-card-container">
     <md-card class="focused-card">
         <h3>Focused Card</h3>
-        THLTHTILH
-        w4tlikehsa
+          <h4>Name:</h4>
+          <h4>Category:</h4>
+          <h4>Description:</h4>
        
     </md-card>
     </div>
     <!-- again, mvp here, not very modular and in future will want ability to swap out, but for now.. -->
     <div id="random-search-container">
-        <div class="row">
-            <i class="fa fa-random" type="submit" ng-click="randomize(searchObject)"></i>
-            <form>
-                <div class="col-sm-4">
-                    <h3 class="md-warn inline-blocker" ng-model="docType1">API:</h3>
+        <div class="row selecting-category">
+           
+                <div class="col-sm-3">
+                    <h3 class="md-warn inline-blocker">API:</h3>
                     <md-input-container class="inline-blocker category-selector">
                         <label>Category</label>
                         <md-select ng-model="category1">
-                            <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
+                            <md-option ng-repeat="category in apiCategories" ng-value="category">{{category}}</md-option>
                         </md-select>
                     </md-input-container>
                 </div>
-                <div class="col-sm-4">
-                    <h3 class="md-warn inline-blocker" ng-model="docType2">API:</h3>
+                <div class="col-sm-3">
+                    <h3 class="md-warn inline-blocker">API:</h3>
                     <md-input-container class="inline-blocker category-selector">
                         <label>Category</label>
                         <md-select ng-model="category2">
-                            <md-option ng-repeat="category in categories" value="{{category}}">{{category}}</md-option>
+                            <md-option ng-repeat="category in apiCategories" ng-value="category">{{category}}</md-option>
                         </md-select>
                     </md-input-container>
                 </div>
                 <div class="col-sm-4">
-                    <h3>Dataset category</h3>
+                <h3 class="md-warn inline-blocker">Dataset</h3>
+                 <md-input-container class="inline-blocker category-selector">
+                 <label>Category</label>
+                       <md-select ng-model="category3">
+                            <md-option ng-repeat="category in datasetCategories" ng-value="category">{{category}}</md-option>
+                        </md-select>
+                    </md-input-container>
                 </div>
-            </form>
+                <div class="col-sm-1">
+                   <a ng-click="randomize(category1,category2,category3)" class="shuffle-icon"><i class="fa fa-random"></i></a>
+                </div>
         </div>
         <div class="row">
-            <div ng-repeat="api in thing" class="random-result">
+            <div ng-repeat="object in resultObjects" class="random-result col-md-4">
                 <md-card>
                     <div class="hundred-percenter">
-                        <a href='http://{{api.link}}' target="_blank">{{api.name}}</a>
+                        <a href='http://{{object.link}}' target="_blank">{{object.name}}</a>
                         <i class="fa fa-heart inliner" ng-click="myStyle={color:'red'}"></i>
                         <i class="fa fa-plus inliner"></i>
                     </div>
-                    <div>{{api.description}}</div>
+                    <div>{{object.description}}</div>
                 </md-card>
             </div>
         </div>

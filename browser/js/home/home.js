@@ -17,12 +17,6 @@ app.factory('ApiFactory', function($http) {
                 console.log("response" + response.data)
                 return response.data
             })
-        },
-        getCategories: function() {
-            return $http.get('/api/apis/categories')
-                .then(function(response) {
-                    return response.data
-                })
         }
 
     }

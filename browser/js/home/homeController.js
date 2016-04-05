@@ -6,11 +6,17 @@ app.controller('HomeCtrl', function ($scope, AuthService, $state, ApiFactory, Ra
 	$scope.thing = list
 	})
 
-	ApiFactory.getCategories()
+	RandomFactory.getCategories()
 	.then(function(cats){
-		$scope.categories = cats;
+		$scope.apiCategories = cats[0];
+		$scope.datasetCategories = cats[1];
 		
 	})
 
-	$scope.randomize = RandomFactory.randomize;
+	$scope.randomize = function(category1,category2,category3){
+		RandomFactory.randomize(category1,category2,category3)
+		.then(function(resultArr){
+			$scope.resultObjects = resultArr;
+		})
+	}
 });

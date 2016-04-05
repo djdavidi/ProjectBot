@@ -8,6 +8,11 @@
 .random-result{
 	display: inline-block;
 	width:25%;
+	margin:0 auto;
+	text-align: top;
+}
+.shuffle-icon{
+	margin-top: 500px;
 }
 
 a{
@@ -21,7 +26,9 @@ a{
 	width:25px;
 	cursor:pointer;
 }
-
+.selecting-category{
+	height:80px;
+}
 .hundred-percenter{
 	width:100%;
 }
@@ -60,4 +67,9 @@ a{
   resize:none;
   border:1px solid gray;
   overflow-y: auto;
+}
+.no-margin-padding{
+	margin-left:0;
+	margin-right:0;
+
 }

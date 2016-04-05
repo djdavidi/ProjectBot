@@ -16,5 +16,9 @@ var schema = mongoose.Schema({
     }
 })
 
+schema.statics.findRandom = function(category){
+    if(!category) return this.findOne({});
+    return this.findOne({category:category})
+}
 
 mongoose.model('Dataset',schema)
