@@ -73,7 +73,7 @@ function getDetails(){
 	})
 
 }
-getDetails()
+// getDetails()
 
 function getDatasets(){
 	var tempArray =[];
@@ -106,3 +106,4 @@ function getDatasets(){
 		})
 	})
 }
+getDatasets()

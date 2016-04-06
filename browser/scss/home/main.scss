@@ -5,6 +5,7 @@
 	color:gray;
 }
 
+
 .random-result{
 	display: inline-block;
 	width:25%;
@@ -12,7 +13,7 @@
 	text-align: top;
 }
 .shuffle-icon{
-	margin-top: 500px;
+	height:100%;
 }
 
 a{
@@ -56,20 +57,37 @@ a{
 
 }
 .focused-card{
+	font-family: Roboto-Light;
 	text-align:center;
 	width:100%;
 }
 .idea-input{
+  padding-right: 10px;
+  padding-left: 10px;
   width:100%;
   overflow:hidden;
-  height:250px;
+  height:150px;
   max-height:250px;
   resize:none;
-  border:1px solid gray;
   overflow-y: auto;
+}
+.idea-input:focus{
+	
 }
 .no-margin-padding{
 	margin-left:0;
 	margin-right:0;
 
+}
+.padding-zero{
+	padding-bottom: 0;
+	margin-bottom: 10;
+	vertical-align: middle;
+}
+.list-of-selected{
+	
+}
+
+.vertical-center{
+	margin-top:50%;
 }

@@ -1,5 +1,11 @@
+@font-face{
+  font-family:Roboto-Light;
+  src: url(Roboto-Light.ttf)
+}
+
 * {
   box-sizing: border-box;
+  font-family:Roboto-Light;
 }
 
 body {

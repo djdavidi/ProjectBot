@@ -13,17 +13,16 @@ router.get('/',function(req,res){
 	// send back array of objects maybe?
 	// req.body.selectedCategories
 	// req.body.alreadySelectedItemIds
-	console.log("req.params"+JSON.stringify(req.params))
-	var a = Api.findRandom(req.params.apiOne)
-	var b = a.then(function(apiOneRes){
-			return Api.findRandom(req.params.apiTwo)			
-	})
-	var c = b.then(function(apiTwoRes){
-		return Dataset.findRandom(req.params.datasetOne)
-	})
-	Promise.join(a,b,c,function(apiOneRes,apiTwoRes,datasetOneRes){
-		console.log(apiOneRes,apiTwoRes,datasetOneRes)
-		res.send([apiOneRes,apiTwoRes,datasetOneRes])
+	console.log("req.query"+JSON.stringify(req.query))
+	if(!req.query.api) req.query.api=[null,null]
+	var a = Api.findRandom(req.query.api[0])
+	var b = Api.findRandom(req.query.api[1])			
+	var c = Dataset.findRandom(req.query.dataset)
+	Promise.all([a,b,c]).spread(function(val1,val2,val3){
+		var values= [val1,val2,val3]
+		console.log
+		console.log("promise results"+values)
+		res.send(values)
 	})
 })
 
@@ -38,7 +37,6 @@ router.get('/categories',function(req,res){
 		})]
 	})
 	.spread(function(ApiCats,DataCats){
-		console.log(DataCats)
 		res.send([ApiCats,DataCats])
 	})
 

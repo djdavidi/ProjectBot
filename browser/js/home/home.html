@@ -1,47 +1,47 @@
 <section id="home">
     <div class="focused-card-container">
-    <md-card class="focused-card">
-        <h3>Focused Card</h3>
-          <h4>Name:</h4>
-          <h4>Category:</h4>
-          <h4>Description:</h4>
-       
-    </md-card>
+        <md-card class="focused-card">
+            <h3>Focused Card</h3>
+            <h4>Name:</h4>
+            <h4>Category:</h4>
+            <h4>Description:</h4>
+        </md-card>
     </div>
     <!-- again, mvp here, not very modular and in future will want ability to swap out, but for now.. -->
     <div id="random-search-container">
         <div class="row selecting-category">
-           
-                <div class="col-sm-3">
-                    <h3 class="md-warn inline-blocker">API:</h3>
-                    <md-input-container class="inline-blocker category-selector">
-                        <label>Category</label>
-                        <md-select ng-model="category1">
-                            <md-option ng-repeat="category in apiCategories" ng-value="category">{{category}}</md-option>
-                        </md-select>
-                    </md-input-container>
+            <div class="col-sm-3">
+                <h3 class="md-warn inline-blocker padding-zero">API:</h3>
+                <md-input-container class="inline-blocker category-selector">
+                    <label>Category</label>
+                    <md-select ng-model="category1">
+                        <md-option ng-repeat="category in apiCategories" ng-value="category">{{category}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="col-sm-3">
+                <h3 class="md-warn inline-blocker padding-zero">API:</h3>
+                <md-input-container class="inline-blocker category-selector">
+                    <label>Category</label>
+                    <md-select ng-model="category2">
+                        <md-option ng-repeat="category in apiCategories" ng-value="category">{{category}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="col-sm-4">
+                <h3 class="md-warn inline-blocker padding-zero">Dataset</h3>
+                <md-input-container class="inline-blocker category-selector">
+                    <label>Category</label>
+                    <md-select ng-model="category3">
+                        <md-option ng-repeat="category in datasetCategories" ng-value="category">{{category}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="col-sm-1 shuffle-icon">
+                <div class="vertical-center">
+                <a ng-click="randomize(category1,category2,category3)"><i class="fa fa-random fa-2x"></i></a>
                 </div>
-                <div class="col-sm-3">
-                    <h3 class="md-warn inline-blocker">API:</h3>
-                    <md-input-container class="inline-blocker category-selector">
-                        <label>Category</label>
-                        <md-select ng-model="category2">
-                            <md-option ng-repeat="category in apiCategories" ng-value="category">{{category}}</md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-                <div class="col-sm-4">
-                <h3 class="md-warn inline-blocker">Dataset</h3>
-                 <md-input-container class="inline-blocker category-selector">
-                 <label>Category</label>
-                       <md-select ng-model="category3">
-                            <md-option ng-repeat="category in datasetCategories" ng-value="category">{{category}}</md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-                <div class="col-sm-1">
-                   <a ng-click="randomize(category1,category2,category3)" class="shuffle-icon"><i class="fa fa-random"></i></a>
-                </div>
+            </div>
         </div>
         <div class="row">
             <div ng-repeat="object in resultObjects" class="random-result col-md-4">
@@ -51,38 +51,45 @@
                         <i class="fa fa-heart inliner" ng-click="myStyle={color:'red'}"></i>
                         <i class="fa fa-plus inliner"></i>
                     </div>
-                    <div>{{object.description}}</div>
+                    <div class="animated fadeIn">{{object.description}}</div>
                 </md-card>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-sm-3">
-                <h2>Apis</h2>
-                <div ng-repeat="api in apis">
-                    {{api.name}}
-                    <i class="fa fa-times"></i>
-                </div>
-                <md-card>hey</md-card>
-            </div>
-            <div class="col-sm-3">
-                <h2>Datasets</h2>
-                <div ng-repeat="dataset in datasets">
-                    {{dataset.name}}
-                    <i class="fa fa-times"></i>
+                <h2 class="list-of-selected">Apis</h2>
+                <div ng-repeat="api in combinationApis">
+                    <md-card>
+                        {{api.name}}
+                        <i class="fa fa-times"></i>
+                    </md-card>
                 </div>
             </div>
             <div class="col-sm-3">
-                <h2>Tools</h2> coming soon e.g phaser webgl
-                <div ng-repeat="tool in tools">
-                    {{tool.name}}
-                    <i class="fa fa-times"></i>
+                <h2 class="list-of-selected">Datasets</h2>
+                <div ng-repeat="dataset in combinationDatasets">
+                    <md-card>
+                        {{dataset.name}}
+                        <i class="fa fa-times"></i>
+                    </md-card>
                 </div>
             </div>
             <div class="col-sm-3">
-            <h2> Idea</h2>
+                <h2 class="list-of-selected">Tools</h2> coming soon e.g phaser webgl
+                <div ng-repeat="tool in combinationTools">
+                    <md-card>
+                        {{tool.name}}
+                        <i class="fa fa-times"></i>
+                    </md-card>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h2 class="list-of-selected"> Idea</h2>
                 <!-- ng sanitize this -->
-                <textarea class="idea-input"></textarea>
+                <md-card>
+                    <textarea class="idea-input"></textarea>
+                </md-card>
             </div>
         </div>
     </div>
