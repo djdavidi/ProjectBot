@@ -16,7 +16,9 @@ var createApplication = function () {
 
 var startServer = function () {
 
-    var PORT = process.env.PORT || 1337;
+    // var PORT = process.env.PORT || 1337;
+    var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+	var PORT = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
     server.listen(PORT, function () {
         console.log(chalk.blue('Server started on port', chalk.magenta(PORT)));

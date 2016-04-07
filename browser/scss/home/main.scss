@@ -42,6 +42,7 @@ a{
 	width:70%;
 }
 .focused-card-container{
+	padding-right:5%;
 	width:30%;
 	margin-right:0;
 	float:right;
@@ -57,8 +58,8 @@ a{
 
 }
 .focused-card{
-	font-family: Roboto-Light;
-	text-align:center;
+	padding-left:5%;
+	text-align:left;
 	width:100%;
 }
 .idea-input{

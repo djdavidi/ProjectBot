@@ -14,6 +14,10 @@ var schema = mongoose.Schema({
     numTimesSelected: {
         type: Number,
         default: 0
+    },
+    class:{
+        type:String,
+        default:'Api'
     }
 })
 
@@ -27,7 +31,7 @@ schema.statics.findRandom = function(category) {
             .then(function(amountOfData) {
                 randNum = Math.floor(Math.random() * amountOfData)
                 res = self.find({}).limit(1).skip(randNum)
-                return res;
+              return res;
             })
     } else {
         console.log("in category\n")
@@ -35,7 +39,7 @@ schema.statics.findRandom = function(category) {
             .then(function(amountOfData) {
                 randNum = Math.floor(Math.random() * amountOfData)
                 res = self.find({ category: category }).limit(1).skip(randNum)
-                return res
+                return res;
             })
     }
 }

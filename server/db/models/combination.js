@@ -18,4 +18,4 @@ var schema = mongoose.Schema({
 
 // have to aggregate them or whatever that is to sum them
 
-mongoose.model('Combination',schema)
+mongoose.model('Idea',schema)

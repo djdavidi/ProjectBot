@@ -8,14 +8,10 @@ navbar {
   .container {
     width: 91%;
     max-width: 1340px;
-    padding-top: 20px;
+
   }
 
-  my-logo {
-    margin-top: 5px;
-    margin-right: 20px;
-    width: 40px;
-  }
+
 
   a {
     color: black;
@@ -37,16 +33,20 @@ navbar {
     }
   }
 
+  .top-of-site{
+    padding-left: 25px;
+    width:16%;
+    margin-right:0px;
+    font-size:2em;
+    cursor:pointer;
+  }
   .login-button {
-    float: right;
-    
+    margin-left:65%;
     margin-top: 10px;
-    background: none;
-    
   }
 
   .welcome {
-    float: right;
+    margin-left:65%;
     margin-top: 12px;
     span {
       color: black;
@@ -58,5 +58,9 @@ navbar {
       cursor: pointer;
     }
   }
+  .search-bar-custom{
+  width:100px;
+  padding-right:1%;
+}
 
 }

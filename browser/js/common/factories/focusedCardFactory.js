@@ -1,4 +1,4 @@
-app.factory('SelectedCardFactory',function(){
+app.factory('FocusedCardFactory',function(){
 	return {
 			card:{
 				name:'',
