@@ -9,6 +9,7 @@
            
         </div> -->
         <md-button ng-show="!user" ui-sref="login" class="md-cornered login-button md-raised">Login</md-button>
+        <md-button ng-show="!user" ui-sref="signup" class="md-cornered  md-raised md-accent">Sign Up</md-button>
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>
