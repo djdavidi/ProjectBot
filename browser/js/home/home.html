@@ -2,11 +2,14 @@
     <div class="focused-card-container">
         <md-card class="focused-card" ng-model="focusedCard" ng-hide="!focusedCard">
             <div class="animated fadeIn">
-                <p>Name:{{focusedCard.name}}</p>
-                <p>Category:{{focusedCard.category}}</p>
-                <p>Description:{{focusedCard.description}}</p>
+                <p><span class="bolder">Name:</span>{{focusedCard.name}}</p>
+                <p><span class="bolder">Category:</span>{{focusedCard.category}}</p>
+                <p><span class="bolder">Description:</span>{{focusedCard.description}}</p>
             </div>
         </md-card>
+            <div>Currently a WIP, some features may not work, and the UI is under construction</div>
+            <div>Check the project out on Github      <a href="https://github.com/djdavidi/ProjectBot" target="_blank"><i class="fa fa-github"></i></a></div>
+            <div>You can reach me with comments and improvements at my twitter     <a href="https://twitter.com/DScherban" target="_blank"><i class="fa fa-twitter"></i></a></div>
     </div>
     <!-- again, mvp here, not very modular and in future will want ability to swap out, but for now.. -->
     <div id="random-search-container">
@@ -16,7 +19,7 @@
                 <md-input-container class="inline-blocker category-selector">
                     <label>Category</label>
                     <md-select ng-model="category1">
-                        <md-option ng-repeat="category in apiCategories" ng-value="category">{{category}}</md-option>
+                        <md-option ng-repeat="category in apiCategories | orderBy:category.name" ng-value="category">{{category}}</md-option>
                     </md-select>
                 </md-input-container>
             </div>
@@ -25,7 +28,7 @@
                 <md-input-container class="inline-blocker category-selector">
                     <label>Category</label>
                     <md-select ng-model="category2">
-                        <md-option ng-repeat="category in apiCategories" ng-value="category">{{category}}</md-option>
+                        <md-option ng-repeat="category in apiCategories | orderBy:category.name" ng-value="category">{{category}}</md-option>
                     </md-select>
                 </md-input-container>
             </div>
@@ -34,7 +37,7 @@
                 <md-input-container class="inline-blocker category-selector">
                     <label>Category</label>
                     <md-select ng-model="category3">
-                        <md-option ng-repeat="category in datasetCategories" ng-value="category">{{category}}</md-option>
+                        <md-option ng-repeat="category in datasetCategories | orderBy:category.name" ng-value="category">{{category}}</md-option>
                     </md-select>
                 </md-input-container>
             </div>
@@ -61,27 +64,27 @@
             <div class="col-sm-3">
                 <h3 class="list-of-selected">APIs</h3>
                 <div ng-repeat="api in selectedApis">
-                    <md-card>
+                    <md-card ng-mouseenter="changeFocus(api)" ng-mouseleave= "changeFocus(null)">
                         {{api.name}}
-                        <i class="fa fa-times"></i>
+                        <i class="fa fa-times" ng-click="removeSelected(api)"></i>
                     </md-card>
                 </div>
             </div>
             <div class="col-sm-3">
                 <h3 class="list-of-selected">Datasets</h3>
                 <div ng-repeat="dataset in selectedDatasets">
-                    <md-card>
+                    <md-card ng-mouseenter="changeFocus(dataset)" ng-mouseleave= "changeFocus(null)">
                         {{dataset.name}}
-                        <i class="fa fa-times"></i>
+                        <i class="fa fa-times" ng-click="removeSelected(dataset)"></i>
                     </md-card>
                 </div>
             </div>
             <div class="col-sm-3">
                 <h3 class="list-of-selected">Tools</h3> coming soon e.g phaser webgl
                 <div ng-repeat="tool in selectedTools">
-                    <md-card>
+                    <md-card ng-mouseenter="changeFocus(tool)" ng-mouseleave= "changeFocus(null)">
                         {{tool.name}}
-                        <i class="fa fa-times"></i>
+                        <i class="fa fa-times" ng-click="removeSelected(tool)"></i>
                     </md-card>
                 </div>
             </div>

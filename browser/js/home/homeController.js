@@ -36,9 +36,21 @@ app.controller('HomeCtrl', function($scope, AuthService, $state, ApiFactory, Ran
 
     $scope.addToFavorites = function(itemId) {
         console.log("in addToFavorites" + itemId)
-
     }
-
+    $scope.removeSelected = function(item) {
+        var index;
+        if (item.class === 'Api') {
+            console.log('in api')
+            index = $scope.selectedApis.indexOf(item)
+            if (index <= -1) return;
+            $scope.selectedApis.splice(index, 1);
+        } else if (item.class === 'Dataset') {
+            console.log('in dataset')
+            index = $scope.selectedDatasets.indexOf(item)
+            if (index <= -1) return;
+            $scope.selectedDatasets.splice(index, 1);
+        }
+    }
     $scope.addToSelected = function(item) {
         console.log("in addToSelected" + item)
         if (item.class === 'Api') {
