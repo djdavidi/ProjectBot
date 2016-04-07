@@ -1,14 +1,10 @@
-var http = require('http');
-var https = require('https');
-http.globalAgent.maxSockets = 1;
-https.globalAgent.maxSockets = 1;
-
 var apiData = require('./scraped')
 var Promise = require('bluebird')
 var rp = require('request-promise')
 var request = require('request')
 var cheerio = require('cheerio');
 var fs = require('fs');
+var tempArray =[];
 
 function getApiData(){
 	request(url,function(error,response,body){
@@ -25,7 +21,7 @@ function getApiData(){
 						description:$(e).find('td:nth-child(2)').text().trim(),
 						category:$(e).find('td:nth-child(3) > a').text()
 					};
-					holdArray.push(apiObject);
+					tempArray.push(apiObject);
 				})
 			})
 			var next= $('li.pager-last.last > a').attr('href');
@@ -49,14 +45,15 @@ function getApiData(){
 //realised that i needed the longer descriptions
 // obviously not complete
 function getDetails(){
+	var counter = 0;
 	Promise.map(apiData,function(api){
 		return rp("http://"+api.link)
 		.then(function(html){
 				var $ = cheerio.load(html);
 				api.link = $('#tabs-content > div.section.specs > div:nth-child(4) > span > a').attr('href');
-				console.log('link'+api.link)
 				api.description = $('#tabs-header-content > div > div.api_description.tabs-header_description').text().trim();
-				console.log('link'+api.description)
+				counter ++;
+				console.log("Counter"+counter)
 			return api
 			
 		})
@@ -73,10 +70,9 @@ function getDetails(){
 	})
 
 }
-// getDetails()
+getDetails()
 
 function getDatasets(){
-	var tempArray =[];
 	// get by tag name, then for each of those get the ul, then set the category equal that that h2 text, link equal 
 	// to the li's href and description "To be set"
 	rp('https://github.com/caesar0301/awesome-public-datasets/blob/master/README.rst#agriculture')
@@ -106,4 +102,3 @@ function getDatasets(){
 		})
 	})
 }
-getDatasets()

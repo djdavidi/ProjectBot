@@ -13,6 +13,10 @@ var schema = mongoose.Schema({
     numTimesSelected: {
         type: Number,
         default: 0
+    },
+    class:{
+        type:String,
+        default:'Dataset'
     }
 })
 

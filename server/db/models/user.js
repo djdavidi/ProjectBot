@@ -13,11 +13,14 @@ var schema = new mongoose.Schema({
     salt: {
         type: String
     },
-    favorites:[{
+    favoriteApis:[{
         type:mongoose.Schema.Types.ObjectId,ref:'Api'
     }],
-    combinations:[{
-        type:mongoose.Schema.Types.ObjectId,ref:'Combination'
+    favoriteDatasets:[{
+        type:mongoose.Schema.Types.ObjectId,ref:'Dataset'
+    }],
+    ideas:[{
+        type:mongoose.Schema.Types.ObjectId,ref:'Idea'
     }],
     google: {
         id: String

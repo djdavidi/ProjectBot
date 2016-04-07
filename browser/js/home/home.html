@@ -1,10 +1,11 @@
 <section id="home">
     <div class="focused-card-container">
-        <md-card class="focused-card">
-            <h3>Focused Card</h3>
-            <h4>Name:</h4>
-            <h4>Category:</h4>
-            <h4>Description:</h4>
+        <md-card class="focused-card" ng-model="focusedCard" ng-hide="!focusedCard">
+            <div class="animated fadeIn">
+                <p>Name:{{focusedCard.name}}</p>
+                <p>Category:{{focusedCard.category}}</p>
+                <p>Description:{{focusedCard.description}}</p>
+            </div>
         </md-card>
     </div>
     <!-- again, mvp here, not very modular and in future will want ability to swap out, but for now.. -->
@@ -39,17 +40,17 @@
             </div>
             <div class="col-sm-1 shuffle-icon">
                 <div class="vertical-center">
-                <a ng-click="randomize(category1,category2,category3)"><i class="fa fa-random fa-2x"></i></a>
+                    <a ng-click="randomize(category1,category2,category3)"><i class="fa fa-random fa-2x"></i></a>
                 </div>
             </div>
         </div>
         <div class="row">
             <div ng-repeat="object in resultObjects" class="random-result col-md-4">
-                <md-card>
+                <md-card ng-mouseenter="changeFocus(object)" ng-mouseleave= "changeFocus(null)">
                     <div class="hundred-percenter">
                         <a href='http://{{object.link}}' target="_blank">{{object.name}}</a>
-                        <i class="fa fa-heart inliner" ng-click="myStyle={color:'red'}"></i>
-                        <i class="fa fa-plus inliner"></i>
+                        <i class="fa fa-heart inliner" ng-click="addToFavorites(object._id)"></i>
+                        <i class="fa fa-plus inliner" ng-click="addToSelected(object)"></i>
                     </div>
                     <div class="animated fadeIn">{{object.description}}</div>
                 </md-card>
@@ -58,8 +59,8 @@
         <br>
         <div class="row">
             <div class="col-sm-3">
-                <h2 class="list-of-selected">Apis</h2>
-                <div ng-repeat="api in combinationApis">
+                <h3 class="list-of-selected">APIs</h3>
+                <div ng-repeat="api in selectedApis">
                     <md-card>
                         {{api.name}}
                         <i class="fa fa-times"></i>
@@ -67,8 +68,8 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <h2 class="list-of-selected">Datasets</h2>
-                <div ng-repeat="dataset in combinationDatasets">
+                <h3 class="list-of-selected">Datasets</h3>
+                <div ng-repeat="dataset in selectedDatasets">
                     <md-card>
                         {{dataset.name}}
                         <i class="fa fa-times"></i>
@@ -76,8 +77,8 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <h2 class="list-of-selected">Tools</h2> coming soon e.g phaser webgl
-                <div ng-repeat="tool in combinationTools">
+                <h3 class="list-of-selected">Tools</h3> coming soon e.g phaser webgl
+                <div ng-repeat="tool in selectedTools">
                     <md-card>
                         {{tool.name}}
                         <i class="fa fa-times"></i>

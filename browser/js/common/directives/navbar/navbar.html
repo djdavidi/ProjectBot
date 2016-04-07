@@ -2,13 +2,13 @@
  <md-toolbar class="md-hue-2">
     <div class="container md-toolbar-tools">
         <div class="top-of-site">
-            <div id="project-heading inliner">Project Bot</div>
+            <div id="project-heading inliner" ui-sref="home">ProjectBot</div>
         </div>
-        <div class="search-bar-custom inliner">
+       <!--  <div class="search-bar-custom inliner">
         <i class="fa fa-search"></i>
-            <!-- Optimal way to have autocomplete performantly -->
-        </div>
-        <md-button ng-show="!user" ui-sref="login" class="btn login-button md-raised">Login</md-button>
+           
+        </div> -->
+        <md-button ng-show="!user" ui-sref="login" class="md-cornered login-button md-raised">Login</md-button>
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>
