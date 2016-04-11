@@ -9,6 +9,7 @@ var Promise = require('bluebird')
 //  apis/tech
 // apis/random/
 router.get('/', function(req, res) {
+    console.log("random apis/rand")
     //have to make sure they are unique
     // send back array of objects maybe?
     // req.body.selectedCategories

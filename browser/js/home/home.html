@@ -7,9 +7,9 @@
                 <p><span class="bolder">Description:</span>{{focusedCard.description}}</p>
             </div>
         </md-card>
-            <div>Currently a WIP, some features may not work, and the UI is under construction</div>
-            <div>Check the project out on Github      <a href="https://github.com/djdavidi/ProjectBot" target="_blank"><i class="fa fa-github"></i></a></div>
-            <div>You can reach me with comments and improvements at my twitter     <a href="https://twitter.com/DScherban" target="_blank"><i class="fa fa-twitter"></i></a></div>
+        <div>Currently a WIP, some features may not work, and the UI is under construction</div>
+        <div>Check the project out on Github <a href="https://github.com/djdavidi/ProjectBot" target="_blank"><i class="fa fa-github"></i></a></div>
+        <div>You can reach me with comments and improvements at my twitter <a href="https://twitter.com/DScherban" target="_blank"><i class="fa fa-twitter"></i></a></div>
     </div>
     <!-- again, mvp here, not very modular and in future will want ability to swap out, but for now.. -->
     <div id="random-search-container">
@@ -47,12 +47,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div ng-repeat="object in resultObjects" class="random-result col-md-4">
-                <md-card ng-mouseenter="changeFocus(object)" ng-mouseleave= "changeFocus(null)">
+        <div class="row random-result-container">
+            <div ng-repeat="object in resultObjects" class="random-result">
+                <md-card ng-mouseenter="changeFocus(object)" ng-mouseleave="changeFocus(null)" class="result-card">
                     <div class="hundred-percenter">
                         <a href='http://{{object.link}}' target="_blank">{{object.name}}</a>
-                        <i class="fa fa-heart inliner" ng-click="addToFavorites(object._id)"></i>
+                        <i class="fa fa-heart inliner" ng-click="addToFavorites(object._id, object.class)"></i>
                         <i class="fa fa-plus inliner" ng-click="addToSelected(object)"></i>
                     </div>
                     <div class="animated fadeIn">{{object.description}}</div>
@@ -63,33 +63,34 @@
         <div class="row">
             <div class="col-sm-3">
                 <h3 class="list-of-selected">APIs</h3>
-                <div ng-repeat="api in selectedApis">
-                    <md-card ng-mouseenter="changeFocus(api)" ng-mouseleave= "changeFocus(null)">
-                        {{api.name}}
-                        <i class="fa fa-times" ng-click="removeSelected(api)"></i>
+                <div ng-repeat="api in selectedApis" ng-mouseenter="changeFocus(api)" ng-mouseleave="changeFocus(null)">
+                    <md-card class="selected-card">
+                        <div class="">
+                            <a href="{{api.link}}">{{api.name}}</a><i class="fa fa-times float-right" ng-click="removeSelected(api)"></i>
+                        </div>
                     </md-card>
                 </div>
             </div>
             <div class="col-sm-3">
                 <h3 class="list-of-selected">Datasets</h3>
-                <div ng-repeat="dataset in selectedDatasets">
-                    <md-card ng-mouseenter="changeFocus(dataset)" ng-mouseleave= "changeFocus(null)">
-                        {{dataset.name}}
-                        <i class="fa fa-times" ng-click="removeSelected(dataset)"></i>
+                <div ng-repeat="dataset in selectedDatasets" ng-mouseenter="changeFocus(dataset)" ng-mouseleave="changeFocus(null)">
+                    <md-card  class="selected-card">
+                        <div><a href="{{dataset.link}}">{{dataset.name}}</a><i class="fa fa-times float-right" ng-click="removeSelected(dataset)"></i></div>
                     </md-card>
                 </div>
             </div>
             <div class="col-sm-3">
                 <h3 class="list-of-selected">Tools</h3> coming soon e.g phaser webgl
-                <div ng-repeat="tool in selectedTools">
-                    <md-card ng-mouseenter="changeFocus(tool)" ng-mouseleave= "changeFocus(null)">
-                        {{tool.name}}
-                        <i class="fa fa-times" ng-click="removeSelected(tool)"></i>
+                <div ng-repeat="tool in selectedTools" ng-mouseenter="changeFocus(tool)" ng-mouseleave="changeFocus(null)">
+                    <md-card  class="selected-card">
+                        <div>
+                            <a href="{{tool.link}}">{{tool.name}}</a> <i class="fa fa-times float-right" ng-click="removeSelected(tool)"></i>
+                        </div>
                     </md-card>
                 </div>
             </div>
             <div class="col-sm-3">
-                <h2 class="list-of-selected"> Idea</h2>
+                <h2 class="list-of-selected"> Idea: <md-button class="md-cornered md-raised md-primary">Save it</md-button></h2>
                 <!-- ng sanitize this -->
                 <md-card>
                     <textarea class="idea-input"></textarea>

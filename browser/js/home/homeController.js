@@ -1,4 +1,4 @@
-app.controller('HomeCtrl', function($scope, AuthService, $state, ApiFactory, RandomFactory) {
+app.controller('HomeCtrl', function($scope, AuthService, $state, RandomFactory, UserFactory) {
     $scope.selectedApis = [];
     $scope.selectedDatasets = [];
     $scope.selectedTools = [];
@@ -34,8 +34,14 @@ app.controller('HomeCtrl', function($scope, AuthService, $state, ApiFactory, Ran
 
     }
 
-    $scope.addToFavorites = function(itemId) {
+    $scope.addToFavorites = function(itemId,objClass) {
+        var a = AuthService.getLoggedInUser()
+        console.log("user"+JSON.stringify(a))
         console.log("in addToFavorites" + itemId)
+        UserFactory.addToFavorites(itemId,objClass)
+        .then(function(res){
+            console.log("Successfully added to favorites"+res)
+        })
     }
     $scope.removeSelected = function(item) {
         var index;

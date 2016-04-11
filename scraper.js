@@ -60,7 +60,7 @@ function getDetails() {
                 setTimeout(function() {
                     counter++
                     getDetails();
-                }, 2000)
+                }, 800)
             } else {
                 fs.writeFile('detailedApi.json', JSON.stringify(holdArray), function(error) {
                     if (error) console.log("Error " + error)
@@ -100,3 +100,7 @@ getDetails()
                 })
             })
     }
+    apiData.forEach(function(api){
+        if (api.link.indexOf('category')>-1) console.log("api name"+api.name+"link"+api.link)
+    })
+    console.log("apidata length"+apiData.length)
