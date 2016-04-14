@@ -10,7 +10,7 @@ app.factory('UserFactory',function($http,AuthService){
 			console.log("in saveidea UserFactory")
 		},
 		getIdeas:function(){
-			AuthService.getLoggedInUser()
+			$http
 		}
 	}
 })
