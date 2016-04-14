@@ -1,4 +1,4 @@
-app.config(function ($stateProvider) {
+app.config(function($stateProvider) {
 
     $stateProvider.state('signup', {
         url: '/signup',
@@ -8,21 +8,22 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('signupCtrl', function ($scope, AuthService, $state) {
-
+// not actually right- needs to be redone
+app.controller('signupCtrl', function($scope, AuthService, $state) {
     $scope.signup = {};
     $scope.error = null;
 
-    $scope.sendsignup = function (signupInfo) {
+    $scope.sendsignup = function(signupInfo) {
 
         $scope.error = null;
 
-        AuthService.signup(signupInfo).then(function () {
+        AuthService.signup(signupInfo).then(function() {
             $state.go('home');
-        }).catch(function () {
+        }).catch(function() {
             $scope.error = 'Invalid signup credentials.';
         });
 
     };
 
 });
+

@@ -4,9 +4,9 @@ module.exports = router;
 
 
 
-router.get('/favorites/:userId', function(req, res) {
+router.get('/favorites', function(req, res) {
 	console.log("hey");
-	res.send("hey")
+	res.send({})
 })
 
 

@@ -9,7 +9,6 @@ app.config(function($stateProvider) {
 
 
 
-
 app.factory('ApiFactory', function($http) {
     return {
         getApi: function() {
