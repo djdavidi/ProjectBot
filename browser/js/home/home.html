@@ -91,10 +91,10 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <h2 class="list-of-selected"> Idea: <md-button class="md-cornered md-raised md-primary" ng-click="saveIdea()">Save it</md-button></h2>
+                <h2 class="list-of-selected"> Idea: <md-button class="md-cornered md-raised md-primary" ng-click="saveIdea(ideaText,selectedApis,selectedDatasets,selectedTools)">{{saveButtonText}}</md-button></h2>
                 <!-- ng sanitize this -->
                 <md-card>
-                    <textarea class="idea-input"></textarea>
+                    <textarea class="idea-input" ng-model="ideaText"></textarea>
                 </md-card>
             </div>
         </div>

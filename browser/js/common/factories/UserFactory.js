@@ -6,15 +6,17 @@ app.factory('UserFactory',function($http,AuthService){
 				return response.data;
 			})
 		},
-		saveIdea:function(apiArr,datasetArr,toolArr){
-			$http.post('api/ideas')
+		saveIdea:function(ideaText,apiArr,datasetArr,toolArr){
+			console.log("apiArr"+apiArr+":::text"+ ideaText)
+			$http.post('api/ideas',{description:ideaText,apis:apiArr,datasets:datasetArr,tools:toolArr})
 			.then(function(res){
 				return res.data
 			})
 		},
 		getIdeas:function(){
-			$http.get('api/ideas')
+			return $http.get('api/ideas')
 			.then(function(res){
+				console.log("res idea"+res.data)
 				return res.data;
 			})
 		}

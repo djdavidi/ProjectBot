@@ -2,8 +2,14 @@
 var mongoose = require('mongoose')
 
 var schema = mongoose.Schema({
-    name:String,
-    description:String,
+    name:{
+        type:String,
+        default:'Your Idea'
+    },
+    description:{
+        type:String,
+        default:'Your description of your incredible that will change the world.'
+    },
     apis:[{
         type:mongoose.Schema.Types.ObjectId,ref:'Api'
     }],

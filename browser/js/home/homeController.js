@@ -3,7 +3,7 @@ app.controller('HomeCtrl', function($scope, AuthService, $state, RandomFactory, 
     $scope.selectedDatasets = [];
     $scope.selectedTools = [];
     $scope.resultObjects = [];
-
+    $scope.saveButtonText = 'Save it';
     RandomFactory.getCategories()
         .then(function(cats) {
             $scope.apiCategories = cats[0];
@@ -33,8 +33,15 @@ app.controller('HomeCtrl', function($scope, AuthService, $state, RandomFactory, 
             })
 
     }
-    // $scope.saveIdea = UserFac
-
+    $scope.saveIdea = function(text,apis,datasets,tools){
+        //gonna cheat the timing a little here
+        $scope.saveButtonText = "Idea saved!"
+        UserFactory.saveIdea(text,apis,datasets,tools)
+        setTimeout(function(){
+            $scope.saveButtonText = "Save it"
+            $scope.$apply()
+        },1500)
+    }
     $scope.addToFavorites = function(itemId, objClass) {
         UserFactory.addToFavorites(itemId, objClass)
             .then(function(res) {
