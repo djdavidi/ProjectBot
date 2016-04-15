@@ -51,6 +51,7 @@
     app.service('AuthService', function ($http, Session, $rootScope, AUTH_EVENTS, $q) {
 
         function onSuccessfulLogin(response) {
+            console.log("in on successful"+response.data)
             var data = response.data;
             Session.create(data.id, data.user);
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
@@ -85,7 +86,14 @@
             });
 
         };
-
+        this.signup = function(credentials){
+            console.log("in signup authservice")
+            return $http.post('/signup',credentials)
+            .then(onSuccessfulLogin)
+            .catch(function(err){
+                console.log("err"+err)
+            })
+        }
         this.login = function (credentials) {
             return $http.post('/login', credentials)
                 .then(onSuccessfulLogin)
