@@ -1,2 +1,10 @@
-<div>User Ideas</div>
-<div ng-repeat="idea in userIdeas">{{idea}}</div>
+<h1>User Ideas</h1>
+<div ng-repeat="idea in userIdeas">
+	<div>{{idea.name}}</div>
+	<div>{{idea.description}}</div>
+	<div ng-repeat="api in idea.apis">{{apis.name}}</div>
+	<div ng-repeat="datasets in idea.datasets">{{datasets.name}}</div>
+	<br>
+
+
+</div>
