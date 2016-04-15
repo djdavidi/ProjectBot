@@ -1,5 +1,5 @@
 module.exports = {
-  "DATABASE_URI": DATABASE_URI,
+  "DATABASE_URI": "mongodb://localhost:27017/projectbot",
   "SESSION_SECRET": "projectbots roll out",
   "FACEBOOK": {
     "clientID": "INSERT_FACEBOOK_CLIENTID_HERE",
