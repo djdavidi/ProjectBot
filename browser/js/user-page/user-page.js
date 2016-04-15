@@ -15,6 +15,7 @@ app.config(function($stateProvider) {
 
 // not actually right- needs to be redone
 app.controller('userPageCtrl', function($scope,ideas) {
+    console.log("ideers"+ideas)
     $scope.userIdeas = ideas;
 
 });
